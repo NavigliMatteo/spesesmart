@@ -1,0 +1,36 @@
+{
+  "name": "SpeseSmart — Expense Tracker",
+  "short_name": "SpeseSmart",
+  "description": "Traccia le spese della tua carta di credito. Carica CSV e visualizza la dashboard delle spese.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "lang": "it",
+  "categories": ["finance", "productivity"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Carica CSV",
+      "short_name": "Carica",
+      "description": "Importa un nuovo estratto conto",
+      "url": "./#upload"
+    }
+  ]
+}
