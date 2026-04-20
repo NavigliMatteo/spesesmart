@@ -552,8 +552,11 @@ function parseCSV(txt){
   const hdr=pl(lines[0]).map(h=>h.toLowerCase().replace(/['"]/g,'').trim());
   const fi=(...n)=>hdr.findIndex(h=>n.includes(h));
   const iD=fi('data','date','data valuta','data operazione','data contabile','data mov');
-  const iDe=fi('descrizione','description','causale','dettagli','operazione','movimento','beneficiario');
-  const iA=fi('importo','amount','importo eur','importo in euro');
+  // 'nome' prima di 'descrizione': dà nomi merchant più puliti (es. BancaSella, Fineco)
+  const iDe=fi('nome','descrizione','description','causale','dettagli','operazione','movimento','beneficiario','intestatario');
+  // Ricerca esatta + fallback parziale per colonne tipo "Importo ( € )", "Importo (EUR)", ecc.
+  let iA=fi('importo','amount','importo eur','importo in euro');
+  if(iA===-1) iA=hdr.findIndex(h=>h.includes('importo'));
   const iO=fi('uscite','addebiti','dare','spese','importo dare');
   const iI=fi('entrate','accrediti','avere','importo avere');
   if(iD===-1) throw new Error(`Colonna data non trovata. Intestazioni: ${hdr.slice(0,8).join(', ')}`);
